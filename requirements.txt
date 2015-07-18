@@ -1,0 +1,5 @@
+Django==1.8.3
+djangorestframework==3.1
+pygments
+ipython
+django-extensions
