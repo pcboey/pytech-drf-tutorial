@@ -7,13 +7,21 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework import renderers
-# Add import
 from rest_framework import viewsets
 from rest_framework.decorators import detail_route
 
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer, UserSerializer
 from snippets.permissions import IsOwnerOrReadOnly
+
+#########################################################################################
+## pytech-drf-tutorial step-12
+## Using Routers
+##    
+## See http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/#using-routers
+## The DefaultRouter class in urls.py also automatically creates the API root view for us
+## so we can now delete the api_root method from our views module.
+#########################################################################################
 
 class SnippetList(generics.ListCreateAPIView):
     queryset = Snippet.objects.all()
@@ -32,13 +40,6 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     # Edit the property to include IsOwnerOrReadOnly
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
 
-@api_view(('GET',))
-def api_root(request, format=None):
-    return Response({
-        'users': reverse('user-list', request=request, format=format),
-        'snippets': reverse('snippet-list', request=request, format=format)
-    })
-
 class SnippetHighlight(generics.GenericAPIView):
     queryset = Snippet.objects.all()
     renderer_classes = (renderers.StaticHTMLRenderer,)
@@ -47,14 +48,6 @@ class SnippetHighlight(generics.GenericAPIView):
         snippet = self.get_object()
         return Response(snippet.highlighted)
 
-#########################################################################################
-## pytech-drf-tutorial step-11
-## ViewSets & Routers
-##    
-## See http://www.django-rest-framework.org/tutorial/6-viewsets-and-routers/
-#########################################################################################
-
-## Refactor UserList and UserDetail views into a single UserViewSet
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     """
     This viewset automatically provides `list` and `detail` actions.
@@ -62,7 +55,6 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-## Replace the SnippetList, SnippetDetail and SnippetHighlight view classes with a single class
 class SnippetViewSet(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list`, `create`, `retrieve`,
