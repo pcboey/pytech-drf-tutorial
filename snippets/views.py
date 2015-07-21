@@ -1,13 +1,16 @@
 from django.contrib.auth.models import User
 
 from rest_framework import generics
-
 from rest_framework import permissions
+
+# Add these imports
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from rest_framework import renderers
 
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer, UserSerializer
-
-# Add this import
 from snippets.permissions import IsOwnerOrReadOnly
 
 class SnippetList(generics.ListCreateAPIView):
@@ -27,11 +30,6 @@ class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
     # Edit the property to include IsOwnerOrReadOnly
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
 
-#########################################################################################
-## pytech-drf-tutorial step-9
-## Object level permissions
-## See http://www.django-rest-framework.org/tutorial/4-authentication-and-permissions/#object-level-permissions
-#########################################################################################
 
 class UserList(generics.ListAPIView):
     queryset = User.objects.all()
@@ -40,3 +38,27 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+#########################################################################################
+## pytech-drf-tutorial step-10
+## Relationships & Hyperlinked APIs
+##    
+## See http://www.django-rest-framework.org/tutorial/5-relationships-and-hyperlinked-apis/
+#########################################################################################
+
+## Create an endpoint for the root of our API
+@api_view(('GET',))
+def api_root(request, format=None):
+    return Response({
+        'users': reverse('user-list', request=request, format=format),
+        'snippets': reverse('snippet-list', request=request, format=format)
+    })
+
+## Create endpoint for highlighted snippets
+class SnippetHighlight(generics.GenericAPIView):
+    queryset = Snippet.objects.all()
+    renderer_classes = (renderers.StaticHTMLRenderer,)
+
+    def get(self, request, *args, **kwargs):
+        snippet = self.get_object()
+        return Response(snippet.highlighted)
