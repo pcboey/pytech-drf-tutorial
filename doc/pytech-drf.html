@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Django REST Framework Tutorial</title>
-<!-- 2015-07-21 Tue 16:12 -->
+<!-- 2015-07-22 Wed 09:17 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Boey Pak Cheong" />
@@ -142,36 +142,36 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Django REST Framework Tutorial</a></li>
-<li><a href="#sec-2">2. Why Django REST frameworkto (DRF)?</a></li>
-<li><a href="#sec-3">3. Tutorial Set Up</a></li>
-<li><a href="#sec-4">4. Tutorial 1 - Serialization</a>
+<li><a href="#sec-1">Django REST Framework Tutorial</a></li>
+<li><a href="#sec-2">Why Django REST frameworkto (DRF)?</a></li>
+<li><a href="#sec-3">Tutorial Set Up</a></li>
+<li><a href="#sec-4">Tutorial 1 - Serialization</a>
 <ul>
 <li><a href="#sec-4-1">Step 1 - Snippet Model and Serializer class</a></li>
 <li><a href="#sec-4-2">Step 2 -  Using ModelSerializer to reduce code</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. Tutorial 2 - Requests and Responses</a>
+<li><a href="#sec-5">Tutorial 2 - Requests and Responses</a>
 <ul>
 <li><a href="#sec-5-1">Step 3</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6. Tutorial 3 - Class-Based Views</a>
+<li><a href="#sec-6">Tutorial 3 - Class-Based Views</a>
 <ul>
 <li><a href="#sec-6-1">Step 4 - Rewrite our API using CBVs</a></li>
 <li><a href="#sec-6-2">Step 5 - Using Mixins</a></li>
 <li><a href="#sec-6-3">Step 6 - Using generic class based views</a></li>
 </ul>
 </li>
-<li><a href="#sec-7">7. Tutorial 4 - Authentication &amp; Permissions</a>
+<li><a href="#sec-7">Tutorial 4 - Authentication &amp; Permissions</a>
 <ul>
 <li><a href="#sec-7-1">Step 7</a></li>
 <li><a href="#sec-7-2">Step 8 - Associating Snippets with Users</a></li>
 <li><a href="#sec-7-3">Step 9 - Object level permissions</a></li>
 </ul>
 </li>
-<li><a href="#sec-8">8. Tutorial 5 - Relationships &amp; Hyperlinked APIs</a></li>
-<li><a href="#sec-9">9. Tutorial 6 - ViewSets &amp; Routers</a>
+<li><a href="#sec-8">Tutorial 5 - Relationships &amp; Hyperlinked APIs</a></li>
+<li><a href="#sec-9">Tutorial 6 - ViewSets &amp; Routers</a>
 <ul>
 <li><a href="#sec-9-1">Step 11 - Using Viewsets</a></li>
 <li><a href="#sec-9-2">Step 12 -  Using Routers</a></li>
@@ -182,7 +182,7 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> Django REST Framework Tutorial</h2>
+<h2 id="sec-1">Django REST Framework Tutorial</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This tutorial is based on the official <a href="http://www.django-rest-framework.org/tutorial/1-serialization/">Django REST Frameworkwork tutorial</a>.
@@ -195,7 +195,7 @@ with branches for different sections of the tutorial
 </div>
 </div>
 <div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> Why Django REST frameworkto (DRF)?</h2>
+<h2 id="sec-2">Why Django REST frameworkto (DRF)?</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>build web APIs easily
@@ -208,7 +208,7 @@ with branches for different sections of the tutorial
 </div>
 </div>
 <div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Tutorial Set Up</h2>
+<h2 id="sec-3">Tutorial Set Up</h2>
 <div class="outline-text-2" id="text-3">
 <ol class="org-ol">
 <li>Create a virtualenv <code>pytech-drf-tutorial</code>
@@ -245,7 +245,7 @@ $ pip install -r requirements.txt
 </div>
 </div>
 <div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Tutorial 1 - Serialization</h2>
+<h2 id="sec-4">Tutorial 1 - Serialization</h2>
 <div class="outline-text-2" id="text-4">
 </div><div id="outline-container-sec-4-1" class="outline-3">
 <h3 id="sec-4-1">Step 1 - Snippet Model and Serializer class</h3>
@@ -285,7 +285,7 @@ $ git checkout -f step-2
 </div>
 </div>
 <div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Tutorial 2 - Requests and Responses</h2>
+<h2 id="sec-5">Tutorial 2 - Requests and Responses</h2>
 <div class="outline-text-2" id="text-5">
 </div><div id="outline-container-sec-5-1" class="outline-3">
 <h3 id="sec-5-1">Step 3</h3>
@@ -343,7 +343,7 @@ return Response(data)  # Renders to content type as requested by the client.
 </div>
 </div>
 <div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Tutorial 3 - Class-Based Views</h2>
+<h2 id="sec-6">Tutorial 3 - Class-Based Views</h2>
 <div class="outline-text-2" id="text-6">
 </div><div id="outline-container-sec-6-1" class="outline-3">
 <h3 id="sec-6-1">Step 4 - Rewrite our API using CBVs</h3>
@@ -389,7 +389,7 @@ $ git checkout -f step-6
 </div>
 </div>
 <div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7"><span class="section-number-2">7</span> Tutorial 4 - Authentication &amp; Permissions</h2>
+<h2 id="sec-7">Tutorial 4 - Authentication &amp; Permissions</h2>
 <div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>So far anyone can edit or delete code snippets
@@ -445,7 +445,7 @@ if you log in as the same user that created the code snippet.
 </div>
 </div>
 <div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8"><span class="section-number-2">8</span> Tutorial 5 - Relationships &amp; Hyperlinked APIs</h2>
+<h2 id="sec-8">Tutorial 5 - Relationships &amp; Hyperlinked APIs</h2>
 <div class="outline-text-2" id="text-8">
 <ol class="org-ol">
 <li>Checkout Step 10
@@ -457,7 +457,7 @@ $ git checkout -f step-10
 </div>
 </div>
 <div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9"><span class="section-number-2">9</span> Tutorial 6 - ViewSets &amp; Routers</h2>
+<h2 id="sec-9">Tutorial 6 - ViewSets &amp; Routers</h2>
 <div class="outline-text-2" id="text-9">
 </div><div id="outline-container-sec-9-1" class="outline-3">
 <h3 id="sec-9-1">Step 11 - Using Viewsets</h3>
